@@ -26,11 +26,11 @@ To properly tag your tests, you need to add a docblock with `@group` tag to ever
 import Foo from '../src/Foo';
 
 describe( 'Foo class', () => {
-	it( '...', () => {
-		...
-	} );
+    it( '...', () => {
+        ...
+    } );
 
-	...
+    ...
 } );
 ```
 
@@ -46,7 +46,7 @@ Your tests may have multiple groups per file:
  */
 
 describe( 'Dashboard page', () => {
-	...
+    ...
 } );
 ```
 
@@ -56,14 +56,13 @@ To make Jest use this runner, you need to update your Jest config and add `group
 
 ```json
 {
-	"name": "my-package",
-	"version": "1.0.0",
-	"dependencies": {
-		...
-	},
-	"jest": {
-		"runner": "groups"
-	}
+    "name": "my-package",
+    "version": "1.0.0",
+    "dependencies": {
+    },
+    "jest": {
+        "runner": "groups"
+    }
 }
 ```
 
@@ -71,8 +70,8 @@ Or in the `jest.config.js` file:
 
 ```javascript
 module.exports = {
-	...
-	runner: "groups"
+    ...
+    runner: "groups"
 };
 ```
 
