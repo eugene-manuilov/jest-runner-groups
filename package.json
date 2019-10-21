@@ -1,0 +1,28 @@
+{
+	"name": "jest-runner-groups",
+	"version": "1.0.0",
+	"description": "A jest runner that allows to run tests in groups",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eugene-manuilov/jest-runner-groups.git"
+	},
+	"keywords": [
+		"jest",
+		"jest-runner",
+		"groups"
+	],
+	"author": "Eugene Manuilov <eugene.manuilov@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/eugene-manuilov/jest-runner-groups/issues"
+	},
+	"homepage": "https://github.com/eugene-manuilov/jest-runner-groups#readme",
+	"dependencies": {
+		"jest-docblock": "^24.9.0",
+		"jest-runner": "^24.9.0"
+	}
+}
