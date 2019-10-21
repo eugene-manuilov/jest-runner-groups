@@ -1,5 +1,7 @@
 # jest-runner-groups 1.0.0
 
+[![npm version](https://badge.fury.io/js/jest-runner-groups.svg)](https://badge.fury.io/js/jest-runner-groups)
+
 A test runner that allows you to tag your tests and execute specific groups of tests with Jest.
 
 ## Instalation
