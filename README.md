@@ -12,11 +12,11 @@ npm i jest-runner-groups
 
 ## Usage
 
-To use this runner you need to tag your tests, add this runner to your jest config and update your tests execution command to specify which groups to run.
+To use this runner you need to tag your tests, add this runner to your jest config and update your test command to specify which groups to run.
 
 ### Tag your tests
 
-To properly tag your tests, you need to add a docblock with `@group` tag to every test file you have. For example, your test should look like the following to belog to the `unit/classes/foo` group:
+To properly tag your tests, you need to add a docblock with the `@group` tag to every test file you have. For example, your test should look like the following to belong to the `unit/classes/foo` group:
 
 ```javascript
 /**
@@ -95,7 +95,7 @@ You can use multiple `--group` arguments to specify multiple groups to run:
 npm test -- --group=unit/classes --group=unit/services
 ```
 
-Also pay attention that if you specify a prefix of a group, then all tests that have a group which starts with that prefix will be executed. In other words if you run `npm test -- --group=unit` command, then all tests that have a grou that starts with `unit` will be exacuted.
+Also pay attention that if you specify a prefix of a group, then all tests that have a group that starts with that prefix will be executed. In other words, if you run `npm test -- --group=unit` command, then all tests that have a group that starts with `unit` will be executed.
 
 ## Contribute
 
