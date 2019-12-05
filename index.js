@@ -7,7 +7,7 @@ const ARG_PREFIX = '--group=';
 
 class GroupRunner extends TestRunner {
 
-	getGroups( args ) {
+	static getGroups( args ) {
 		const groups = [];
 
 		args.forEach( ( arg ) => {
@@ -19,10 +19,10 @@ class GroupRunner extends TestRunner {
 		return groups;
 	}
 
-	filterTest( groups, test ) {
+	static filterTest( groups, test ) {
 		const parsed = parse( fs.readFileSync( test.path, 'utf8' ) );
 		if ( parsed.group ) {
-			const parsedGroup = Array.isArray( parsed.group ) ? parsed.group : [ parsed.group ];
+			const parsedGroup = Array.isArray( parsed.group ) ? parsed.group : [parsed.group];
 			for ( let i = 0, len = parsedGroup.length; i < len; i++ ) {
 				if ( typeof parsedGroup[i] === 'string' && groups.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
 					return true;
@@ -33,16 +33,16 @@ class GroupRunner extends TestRunner {
 		return false;
 	}
 
-	filterTests( args, tests ) {
-		const groups = this.getGroups( args );
+	static filterTests( args, tests ) {
+		const groups = GroupRunner.getGroups( args );
 		return groups.length
-			? tests.filter( this.filterTest.bind( this, groups ) )
+			? tests.filter( ( test ) => GroupRunner.filterTest( groups, test ) )
 			: tests;
 	}
 
 	runTests( tests, watcher, onStart, onResult, onFailure, options ) {
 		return super.runTests(
-			this.filterTests( process.argv, tests ),
+			GroupRunner.filterTests( process.argv, tests ),
 			watcher,
 			onStart,
 			onResult,

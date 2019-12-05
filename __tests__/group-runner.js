@@ -17,7 +17,7 @@ describe( 'GroupRunner', () => {
 			'--useStderr',
 		];
 
-		const argv = [ '/usr/bin/node', '/path/to/node_modules/.bin/jest' ];
+		const argv = ['/usr/bin/node', '/path/to/node_modules/.bin/jest'];
 		for ( let i = 0, num = random.number( { min: 0, max: jestArgs.length } ); i < num; i++ ) {
 			argv.push( jestArgs[i] );
 		}
@@ -29,7 +29,6 @@ describe( 'GroupRunner', () => {
 			groups.push( group );
 		}
 
-		const runner = new GroupRunner();
-		expect( runner.getGroups( argv ) ).toEqual( groups );
+		expect( GroupRunner.getGroups( argv ) ).toEqual( groups );
 	} );
 } );
