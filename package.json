@@ -26,5 +26,8 @@
 	"dependencies": {
 		"jest-docblock": "^24.9.0",
 		"jest-runner": "^24.9.0"
+	},
+	"devDependencies": {
+		"jest": "^24.9.0"
 	}
 }
