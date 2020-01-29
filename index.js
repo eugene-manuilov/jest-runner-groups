@@ -8,29 +8,47 @@ const ARG_PREFIX = '--group=';
 class GroupRunner extends TestRunner {
 
 	static getGroups( args ) {
-		const groups = [];
+		const include = [];
+		const exclude = [];
 
 		args.forEach( ( arg ) => {
 			if ( arg.startsWith( ARG_PREFIX ) ) {
-				groups.push( arg.substring( ARG_PREFIX.length ) );
+				const group = arg.substring( ARG_PREFIX.length );
+				if ( group.startsWith( '-' ) ) {
+					exclude.push( group.substring( 1 ) );
+				} else {
+					include.push( group );
+				}
 			}
 		} );
 
-		return groups;
+		return {
+			include,
+			exclude,
+		};
 	}
 
-	static filterTest( groups, test ) {
+	static filterTest( { include, exclude }, test ) {
+		let found = false;
+
 		const parsed = parse( fs.readFileSync( test.path, 'utf8' ) );
 		if ( parsed.group ) {
 			const parsedGroup = Array.isArray( parsed.group ) ? parsed.group : [parsed.group];
 			for ( let i = 0, len = parsedGroup.length; i < len; i++ ) {
-				if ( typeof parsedGroup[i] === 'string' && groups.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
-					return true;
+				if ( typeof parsedGroup[i] === 'string' ) {
+					if ( exclude.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+						found = false;
+						break;
+					}
+
+					if ( include.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+						found = true;
+					}
 				}
 			}
 		}
 
-		return false;
+		return found;
 	}
 
 	static filterTests( args, tests ) {
