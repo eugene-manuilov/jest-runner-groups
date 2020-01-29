@@ -1,4 +1,4 @@
-# jest-runner-groups 1.0.0
+# jest-runner-groups 1.1.0
 
 [![npm version](https://badge.fury.io/js/jest-runner-groups.svg)](https://badge.fury.io/js/jest-runner-groups)
 
@@ -6,7 +6,7 @@ A test runner that allows you to tag your tests and execute specific groups of t
 
 ## Instalation
 
-```
+```sh-session
 npm i jest-runner-groups
 ```
 
@@ -81,7 +81,7 @@ module.exports = {
 
 Once you update your tests and jest config, you can start running tests in groups by using `--group` argument. Just specify a group or groups that you want to run like this:
 
-```
+```sh-session
 // using jest executable:
 jest --group=unit
 
@@ -91,11 +91,19 @@ npm test -- --group=unit
 
 You can use multiple `--group` arguments to specify multiple groups to run:
 
-```
+```sh-session
 npm test -- --group=unit/classes --group=unit/services
 ```
 
 Also pay attention that if you specify a prefix of a group, then all tests that have a group that starts with that prefix will be executed. In other words, if you run `npm test -- --group=unit` command, then all tests that have a group that starts with `unit` will be executed.
+
+### Exclude groups
+
+If you want to exclude a subgroup from being executed, add minus character to the beginnig of its name. The following example shows how to run all tests in the `foo` group, but exclude `foo/baz` group:
+
+```sh-session
+jest --group=foo --group=-foo/baz
+```
 
 ## Contribute
 
