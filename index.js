@@ -29,7 +29,7 @@ class GroupRunner extends TestRunner {
 	}
 
 	static filterTest( { include, exclude }, test ) {
-		let found = false;
+		let found = include.length === 0;
 
 		const parsed = parse( fs.readFileSync( test.path, 'utf8' ) );
 		if ( parsed.group ) {
@@ -53,7 +53,7 @@ class GroupRunner extends TestRunner {
 
 	static filterTests( args, tests ) {
 		const groups = GroupRunner.getGroups( args );
-		return groups.length
+		return groups.include.length > 0 || groups.exclude.length > 0
 			? tests.filter( ( test ) => GroupRunner.filterTest( groups, test ) )
 			: tests;
 	}
