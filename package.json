@@ -1,6 +1,6 @@
 {
 	"name": "jest-runner-groups",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Tag and run groups of tests with Jest",
 	"license": "MIT",
 	"author": "Eugene Manuilov <eugene.manuilov@gmail.com>",
@@ -28,8 +28,8 @@
 		"lint": "eslint index.js __tests__/"
 	},
 	"dependencies": {
-		"jest-docblock": "^24.9.0",
-		"jest-runner": "^24.9.0"
+		"jest-docblock": "^25.1.0",
+		"jest-runner": "^25.1.0"
 	},
 	"devDependencies": {
 		"eslint": "^6.8.0",
@@ -37,7 +37,7 @@
 		"eslint-plugin-import": "^2.20.0",
 		"faker": "^4.1.0",
 		"husky": "^3.1.0",
-		"jest": "^24.9.0"
+		"jest": "^25.1.0"
 	},
 	"jest": {
 		"testMatch": [
