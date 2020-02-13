@@ -1,4 +1,4 @@
-# jest-runner-groups 1.1.0
+# jest-runner-groups 1.1.1
 
 [![npm version](https://badge.fury.io/js/jest-runner-groups.svg)](https://badge.fury.io/js/jest-runner-groups)
 
