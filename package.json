@@ -27,7 +27,6 @@
 		"node": ">= 10.14.2"
 	},
 	"scripts": {
-		"test": "jest",
 		"lint": "eslint . --ext .js --ignore-pattern node_modules",
 		"format": "npm run lint --silent -- --fix"
 	},
@@ -40,16 +39,7 @@
 		"eslint-config-airbnb-base": "^14.1.0",
 		"eslint-plugin-import": "^2.20.2",
 		"faker": "^4.1.0",
-		"husky": "^4.2.5",
-		"jest": "^26.0.1",
-		"jest-docblock": "^26.0.0",
-		"jest-runner": "^26.0.1"
-	},
-	"jest": {
-		"testMatch": [
-			"<rootDir>/__tests__/**/*.js"
-		],
-		"verbose": true
+		"husky": "^4.2.5"
 	},
 	"eslintConfig": {
 		"extends": "airbnb-base",
@@ -64,6 +54,7 @@
 				"error",
 				"tab"
 			],
+			"import/no-unresolved": "off",
 			"no-plusplus": [
 				"error",
 				{
