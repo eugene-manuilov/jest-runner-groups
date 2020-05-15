@@ -28,7 +28,8 @@
 	},
 	"scripts": {
 		"test": "jest",
-		"lint": "eslint index.js __tests__/"
+		"lint": "eslint . --ext .js --ignore-pattern node_modules",
+		"format": "npm run lint --silent -- --fix"
 	},
 	"peerDependencies": {
 		"jest-runner": ">= 24",
