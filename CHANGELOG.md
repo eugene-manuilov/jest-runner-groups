@@ -1,5 +1,9 @@
 # Change Log
 
+## v2.0.1 (2020-05-15)
+
+- Fixed readme issues
+
 ## v2.0.0 (2020-05-15)
 
 - Moved jest-runner and jest-docblock to the devDependencies
