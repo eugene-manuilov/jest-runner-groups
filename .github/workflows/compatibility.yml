@@ -1,4 +1,4 @@
-name: Compatibility tests
+name: Compatibility Tests
 
 on: [push]
 
@@ -24,5 +24,16 @@ jobs:
         npm ci
         npm link jest-runner-groups
         npm test
+        popd
+      env:
+        CI: true
+    - name: jest25 install and test
+      run: |
+        npm link
+        pushd ./compatibility/25
+        npm ci
+        npm link jest-runner-groups
+        npm test
+        popd
       env:
         CI: true

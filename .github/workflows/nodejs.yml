@@ -1,4 +1,4 @@
-name: Library tests
+name: Library Tests
 
 on: [push]
 
