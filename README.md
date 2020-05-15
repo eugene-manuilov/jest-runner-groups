@@ -7,10 +7,8 @@ A test runner that allows you to tag your tests and execute specific groups of t
 ## Instalation
 
 ```sh-session
-npm i -D jest-runner-groups jest-runner jest-docblock
+npm i -D jest-runner-groups
 ```
-
-Please, make sure that you install the same versions of `jest-runner` and `jest-docblock` as your version of `jest`. In other words, if you use `jest@^24.9.0`, then you need to install `jest-runner@^24.9.0` and `jest-docblock@^24.9.0`. If you use the latest version of jest, then install runner and docblock as regular.
 
 ## Usage
 
@@ -78,6 +76,8 @@ module.exports = {
     runner: "groups"
 };
 ```
+
+> Note: There is a confusion between [runner](https://jestjs.io/docs/en/configuration#runner-string) and [testRunner](https://jestjs.io/docs/en/configuration#testrunner-string) options in the jest configuration. The main difference between them is that jest uses `runner` to find and execute all tests, and `testRunner` to execute a particular test file. So, if you want to use `jest-circus`, then add it as `testRunner` along with `"runner": "groups"` option and they will work together.
 
 ### Run groups of tests
 
