@@ -21,13 +21,14 @@ jobs:
       run: npm link
       env:
         CI: true
-    - name: go to the compatibility test folder
-      run: cd ./compatibility/24
     - name: install dependencies
       run: npm ci
+      working-directory: ./compatibility/24
       env:
         CI: true
     - name: add jest-runner-groups
       run: npm link jest-runner-groups
+      working-directory: ./compatibility/24
     - name: run tests
       run: npm test
+      working-directory: ./compatibility/24
