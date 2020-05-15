@@ -23,6 +23,9 @@
 		"index.js"
 	],
 	"main": "index.js",
+	"engines": {
+		"node": ">= 10.14.2"
+	},
 	"scripts": {
 		"test": "jest",
 		"lint": "eslint index.js __tests__/"
