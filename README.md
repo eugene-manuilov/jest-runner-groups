@@ -7,8 +7,10 @@ A test runner that allows you to tag your tests and execute specific groups of t
 ## Instalation
 
 ```sh-session
-npm i jest-runner-groups
+npm i -D jest-runner-groups jest-runner jest-docblock
 ```
+
+Please, make sure that you install the same versions of `jest-runner` and `jest-docblock` as your version of `jest`. In other words, if you use `jest@^24.9.0`, then you need to install `jest-runner@^24.9.0` and `jest-docblock@^24.9.0`. If you use the latest version of jest, then install runner and docblock as regular.
 
 ## Usage
 
