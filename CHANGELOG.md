@@ -4,6 +4,7 @@
 
 - Moved jest-runner and jest-docblock to the devDependencies
 - Added jest-runner and jest-docblock to the peerDependencies
+- Removed support for the 8th version of node.js
 
 ## v1.1.1 (2020-02-13)
 
