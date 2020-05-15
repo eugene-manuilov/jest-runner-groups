@@ -14,18 +14,21 @@ jobs:
           - 14.x
         jest:
           - ./compatibility/24
-          - ./compatibility/25
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: install main dependencies
+      run: npm i --no-save jest-runner@^24.9.0 jest-docblock@^24
+      env:
+        CI: true
     - name: Link jest-runner-groups
       run: npm link
       env:
         CI: true
-    - name: install dependencies
+    - name: install test dependencies
       run: npm ci
       working-directory: ${{ matrix.jest }}
       env:
