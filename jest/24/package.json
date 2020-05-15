@@ -3,12 +3,10 @@
 		"test": "jest --group=valid"
 	},
 	"devDependencies": {
-		"jest": "^25.5.4",
-		"jest-docblock": "^25.3.0",
-		"jest-runner": "^25.5.4"
+		"jest": "^24.9.0"
 	},
 	"jest": {
-		"rootDir": "..",
+		"rootDir": "../..",
 		"testMatch": [
 			"<rootDir>/tests/*.js"
 		],
