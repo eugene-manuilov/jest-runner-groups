@@ -27,17 +27,19 @@
 		"test": "jest",
 		"lint": "eslint index.js __tests__/"
 	},
-	"dependencies": {
-		"jest-docblock": "^25.1.0",
-		"jest-runner": "^25.1.0"
+	"peerDependencies": {
+		"jest-runner": ">= 24",
+		"jest-docblock": ">= 24"
 	},
 	"devDependencies": {
-		"eslint": "^6.8.0",
-		"eslint-config-airbnb-base": "^14.0.0",
-		"eslint-plugin-import": "^2.20.1",
+		"eslint": "^7.0.0",
+		"eslint-config-airbnb-base": "^14.1.0",
+		"eslint-plugin-import": "^2.20.2",
 		"faker": "^4.1.0",
-		"husky": "^4.2.3",
-		"jest": "^25.1.0"
+		"husky": "^4.2.5",
+		"jest": "^26.0.1",
+		"jest-docblock": "^26.0.0",
+		"jest-runner": "^26.0.1"
 	},
 	"jest": {
 		"testMatch": [
