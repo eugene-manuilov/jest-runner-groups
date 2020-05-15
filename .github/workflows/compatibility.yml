@@ -1,16 +1,20 @@
 name: Compatibility Tests
 
-on: [push]
+on:
+  - push
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
-
+        node-version:
+          - 10.x
+          - 12.x
+          - 14.x
+        jest:
+          - ./compatibility/24
+          - ./compatibility/25
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,12 +27,12 @@ jobs:
         CI: true
     - name: install dependencies
       run: npm ci
-      working-directory: ./compatibility/24
+      working-directory: ${{ matrix.jest }}
       env:
         CI: true
     - name: add jest-runner-groups
       run: npm link jest-runner-groups
-      working-directory: ./compatibility/24
+      working-directory: ${{ matrix.jest }}
     - name: run tests
       run: npm test
-      working-directory: ./compatibility/24
+      working-directory: ${{ matrix.jest }}
