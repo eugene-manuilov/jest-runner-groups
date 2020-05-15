@@ -1,4 +1,4 @@
-# jest-runner-groups 1.1.1
+# jest-runner-groups 2.0.0
 
 [![npm version](https://badge.fury.io/js/jest-runner-groups.svg)](https://badge.fury.io/js/jest-runner-groups)
 
@@ -7,7 +7,7 @@ A test runner that allows you to tag your tests and execute specific groups of t
 ## Instalation
 
 ```sh-session
-npm i jest-runner-groups
+npm i -D jest-runner-groups
 ```
 
 ## Usage
@@ -76,6 +76,8 @@ module.exports = {
     runner: "groups"
 };
 ```
+
+> Note: There is a confusion between [runner](https://jestjs.io/docs/en/configuration#runner-string) and [testRunner](https://jestjs.io/docs/en/configuration#testrunner-string) options in the jest configuration. The main difference between them is that jest uses `runner` to find and execute all tests, and `testRunner` to execute a particular test file. So, if you want to use `jest-circus`, then add it as `testRunner` along with `"runner": "groups"` option and they will work together.
 
 ### Run groups of tests
 
