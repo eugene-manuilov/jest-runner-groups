@@ -3,7 +3,8 @@
 		"test": "jest --group=valid"
 	},
 	"devDependencies": {
-		"jest": "^24.9.0"
+		"jest": "^24.9.0",
+		"lodash": "^4.17.20"
 	},
 	"jest": {
 		"rootDir": "../..",
