@@ -2,7 +2,7 @@
 
 ## [Unreleased] - TBD
 
-- 
+- Updated dependencies to the latest versions.
 
 ## [v2.0.1] (2020-05-15)
 
