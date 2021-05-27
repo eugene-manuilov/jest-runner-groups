@@ -1,0 +1,17 @@
+{
+	"scripts": {
+		"test": "jest --group=valid"
+	},
+	"devDependencies": {
+		"jest": "^26.6.3",
+		"lodash": "^4.17.21"
+	},
+	"jest": {
+		"rootDir": "../..",
+		"testMatch": [
+			"<rootDir>/tests/*.js"
+		],
+		"runner": "groups",
+		"verbose": true
+	}
+}
