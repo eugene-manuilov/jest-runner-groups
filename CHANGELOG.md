@@ -2,6 +2,10 @@
 
 ## [Unreleased] - TBD
 
+-
+
+## [v2.1.0] (2021-05-27)
+
 - Added support for jest@^27.
 - Updated dependencies to the latest versions.
 
@@ -28,7 +32,8 @@
 
 - Created initial version of the runner.
 
-[Unreleased]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.0.1...master
+[Unreleased]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.1.0...master
+[v2.1.0]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v1.1.1...v2.0.0
 [v1.1.1]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v1.1.0...v1.1.1
