@@ -3,7 +3,7 @@ const fs = require( 'fs' );
 const JestRunner = require( 'jest-runner' );
 const { parse } = require( 'jest-docblock' );
 
-const TestRunner = Object.prototype.hasOwnProperty.call(JestRunner, 'default') ? JestRunner.default : JestRunner;
+const TestRunner = Object.prototype.hasOwnProperty.call( JestRunner, 'default' ) ? JestRunner.default : JestRunner;
 
 const ARG_PREFIX = '--group=';
 
