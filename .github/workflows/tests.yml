@@ -23,13 +23,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Link jest-runner-groups
-      run: npm link
+    - name: Pack jest-runner-groups
+      run: npm pack
     - name: Install test dependencies
       run: npm i
       working-directory: ${{ matrix.jest }}
     - name: Add jest-runner-groups
-      run: npm link jest-runner-groups
+      run: npm i "../../jest-runner-groups-`cat ../../package.json | jq .version -r`.tgz"
       working-directory: ${{ matrix.jest }}
     - name: Run tests
       run: npm test
