@@ -2,6 +2,10 @@
 
 ## [Unreleased] - TBD
 
+- 
+
+## [v2.2.0] (2022-03-28)
+
 - Added information about the currently running groups to environment variables.
 - Updated dependencies to the latest versions.
 
@@ -33,7 +37,8 @@
 
 - Created initial version of the runner.
 
-[Unreleased]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.1.0...master
+[Unreleased]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.2.0...master
+[v2.2.0]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/eugene-manuilov/jest-runner-groups/compare/v1.1.1...v2.0.0
