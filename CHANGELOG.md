@@ -2,6 +2,7 @@
 
 ## [Unreleased] - TBD
 
+- Added information about the currently running groups to environment variables.
 - Updated dependencies to the latest versions.
 
 ## [v2.1.0] (2021-05-27)

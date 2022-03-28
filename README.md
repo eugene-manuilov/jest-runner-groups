@@ -109,6 +109,34 @@ If you want to exclude a subgroup from being executed, add minus character to th
 jest --group=foo --group=-foo/baz
 ```
 
+### Knowing which gruops are running
+
+When you run your tests using jest-runner-groups, you can check which group is currently running by checking the current process environment variables. This can be handy if you want to use different fixtures for different groups or skip a certain functionality for a specific group.
+
+Each group is added with the `JEST_GROUP_` prefix and all non-word characters in the group name are replaced with underscores. For example, if you run the following command:
+
+```sh-session
+npm test -- --group=unit/classes --group=unit/services
+```
+
+Then you can check groups in your jest tests:
+
+```js
+/**
+ * Admin dashboard tests
+ * 
+ * @group unit/classes
+ * @group unit/services
+ * @group unit/utility
+ */
+
+it( '...', () => {
+    expect( process.env.JEST_GROUP_UNIT_CLASSES ).toBeTruthy();
+    expect( process.env.JEST_GROUP_UNIT_SERVICES ).toBeTruthy();
+    expect( process.env.JEST_GROUP_UNIT_UTILITY ).not.toBeTruthy();
+} );
+```
+
 ## Contribute
 
 Want to help or have a suggestion? Open a [new ticket](https://github.com/eugene-manuilov/jest-runner-groups/issues/new) and we can discuss it or submit a pull request.

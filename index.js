@@ -53,16 +53,22 @@ class GroupRunner extends TestRunner {
 		return found;
 	}
 
-	static filterTests( args, tests ) {
-		const groups = GroupRunner.getGroups( args );
-		return groups.include.length > 0 || groups.exclude.length > 0
-			? tests.filter( ( test ) => GroupRunner.filterTest( groups, test ) )
-			: tests;
-	}
-
 	runTests( tests, watcher, onStart, onResult, onFailure, options ) {
+		const groups = GroupRunner.getGroups( process.argv );
+
+		groups.include.forEach( ( group ) => {
+			if ( groups.exclude.includes( group ) ) {
+				return;
+			}
+
+			const name = group.replace( /\W/g, '_' ).toUpperCase();
+			process.env[`JEST_GROUP_${ name }`] = '1';
+		} );
+
 		return super.runTests(
-			GroupRunner.filterTests( process.argv, tests ),
+			groups.include.length > 0 || groups.exclude.length > 0
+				? tests.filter( ( test ) => GroupRunner.filterTest( groups, test ) )
+				: tests,
 			watcher,
 			onStart,
 			onResult,
