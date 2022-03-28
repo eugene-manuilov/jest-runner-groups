@@ -1,8 +1,6 @@
 name: Tests
-
 on:
   - push
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,28 +10,29 @@ jobs:
           - 10.x
           - 12.x
           - 14.x
+          - 16.x
         jest:
           - ./jest/24
           - ./jest/25
           - ./jest/26
           - ./jest/27
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Pack jest-runner-groups
-      run: npm pack
-    - name: Install test dependencies
-      working-directory: ${{ matrix.jest }}
-      run: npm i
-    - name: Add jest-runner-groups
-      working-directory: ${{ matrix.jest }}
-      run: npm i "../../jest-runner-groups-`cat ../../package.json | jq .version -r`.tgz"
-    - name: Run tests
-      working-directory: ${{ matrix.jest }}
-      run: |
-        node --version
-        npx jest --version
-        npm test
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Pack jest-runner-groups
+        run: npm pack
+      - name: Install test dependencies
+        working-directory: ${{ matrix.jest }}
+        run: npm i
+      - name: Add jest-runner-groups
+        working-directory: ${{ matrix.jest }}
+        run: npm i "../../jest-runner-groups-`cat ../../package.json | jq .version -r`.tgz"
+      - name: Run tests
+        working-directory: ${{ matrix.jest }}
+        run: |
+          node --version
+          npx jest --version
+          npm test
