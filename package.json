@@ -35,9 +35,9 @@
 		"jest-docblock": ">= 24"
 	},
 	"devDependencies": {
-		"eslint": "^7.27.0",
+		"eslint": "^7.32.0",
 		"eslint-config-airbnb-base": "^14.2.1",
-		"eslint-plugin-import": "^2.23.3",
+		"eslint-plugin-import": "^2.25.4",
 		"faker": "^4.1.0",
 		"husky": "^4.3.8"
 	},
