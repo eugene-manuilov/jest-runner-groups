@@ -109,7 +109,7 @@ If you want to exclude a subgroup from being executed, add minus character to th
 jest --group=foo --group=-foo/baz
 ```
 
-### Knowing which gruops are running
+### Knowing which groups are running
 
 When you run your tests using jest-runner-groups, you can check which group is currently running by checking the current process environment variables. This can be handy if you want to use different fixtures for different groups or skip a certain functionality for a specific group.
 
