@@ -23,7 +23,7 @@ To properly tag your tests, you need to add a docblock with the `@group` tag to 
 ```javascript
 /**
  * Tests Foo class
- * 
+ *
  * @group unit/classes/foo
  */
 
@@ -43,7 +43,7 @@ Your tests may have multiple groups per file:
 ```javascript
 /**
  * Admin dashboard tests
- * 
+ *
  * @group admin/pages/dashboard
  * @group puppeteer
  * @group acceptance
@@ -60,13 +60,12 @@ To make Jest use this runner, you need to update your Jest config and add `group
 
 ```json
 {
-    "name": "my-package",
-    "version": "1.0.0",
-    "dependencies": {
-    },
-    "jest": {
-        "runner": "groups"
-    }
+  "name": "my-package",
+  "version": "1.0.0",
+  "dependencies": {},
+  "jest": {
+    "runner": "groups"
+  }
 }
 ```
 
@@ -109,6 +108,36 @@ If you want to exclude a subgroup from being executed, add minus character to th
 jest --group=foo --group=-foo/baz
 ```
 
+### Run group of tests using a regular expressions
+
+You can use `--regex` argument to specify multiple groups by a regular expression:
+
+```sh-session
+jest --regex=foo/.\*
+```
+
+You can use multiple `--regex` arguments:
+
+```sh-session
+jest --regex=foo/.\* --regex=bar\|baz
+```
+
+Or use both `--regex` and `--group`:
+
+```sh-session
+jest --regex=foo/.\* --group=bar
+```
+
+### Exclude groups using regular expression
+
+If you want to exclude tests from being executed, add minus character to the beginnig of your regular expression.
+
+The following example shows how to run all tests with a group's name contains `foo`, but exclude all groups that `foo/baz/.*` match their name:
+
+```sh-session
+jest --regex=foo --regex=-foo/baz/.\*
+```
+
 ### Knowing which gruops are running
 
 When you run your tests using jest-runner-groups, you can check which group is currently running by checking the current process environment variables. This can be handy if you want to use different fixtures for different groups or skip a certain functionality for a specific group.
@@ -124,17 +153,17 @@ Then you can check groups in your jest tests:
 ```js
 /**
  * Admin dashboard tests
- * 
+ *
  * @group unit/classes
  * @group unit/services
  * @group unit/utility
  */
 
-it( '...', () => {
-    expect( process.env.JEST_GROUP_UNIT_CLASSES ).toBeTruthy();
-    expect( process.env.JEST_GROUP_UNIT_SERVICES ).toBeTruthy();
-    expect( process.env.JEST_GROUP_UNIT_UTILITY ).not.toBeTruthy();
-} );
+it("...", () => {
+  expect(process.env.JEST_GROUP_UNIT_CLASSES).toBeTruthy();
+  expect(process.env.JEST_GROUP_UNIT_SERVICES).toBeTruthy();
+  expect(process.env.JEST_GROUP_UNIT_UTILITY).not.toBeTruthy();
+});
 ```
 
 ## Contribute

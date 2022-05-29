@@ -6,44 +6,67 @@ const { parse } = require( 'jest-docblock' );
 const TestRunner = Object.prototype.hasOwnProperty.call( JestRunner, 'default' ) ? JestRunner.default : JestRunner;
 
 const ARG_PREFIX = '--group=';
+const REGEX_PREFIX = '--regex=';
 
 class GroupRunner extends TestRunner {
 
 	static getGroups( args ) {
-		const include = [];
-		const exclude = [];
+		const includeGroups = [];
+		const excludeGroups = [];
+		const includeRegexes = [];
+		const excludeRegexes = [];
 
 		args.forEach( ( arg ) => {
 			if ( arg.startsWith( ARG_PREFIX ) ) {
 				const group = arg.substring( ARG_PREFIX.length );
 				if ( group.startsWith( '-' ) ) {
-					exclude.push( group.substring( 1 ) );
+					excludeGroups.push( group.substring( 1 ) );
 				} else {
-					include.push( group );
+					includeGroups.push( group );
+				}
+			} else if ( arg.startsWith( REGEX_PREFIX ) ) {
+				const regex = arg.substring( REGEX_PREFIX.length );
+				if ( regex.startsWith( '-' ) ) {
+					excludeRegexes.push( regex.substring( 1 ) );
+				} else {
+					includeRegexes.push( regex );
 				}
 			}
 		} );
 
 		return {
-			include,
-			exclude,
+			includeGroups,
+			excludeGroups,
+			includeRegexes,
+			excludeRegexes,
 		};
 	}
 
-	static filterTest( { include, exclude }, test ) {
-		let found = include.length === 0;
-
+	static filterTest( {
+		includeGroups, excludeGroups, includeRegexes, excludeRegexes,
+	}, test ) {
+		let found = includeGroups.length === 0;
 		const parsed = parse( fs.readFileSync( test.path, 'utf8' ) );
 		if ( parsed.group ) {
 			const parsedGroup = Array.isArray( parsed.group ) ? parsed.group : [parsed.group];
 			for ( let i = 0, len = parsedGroup.length; i < len; i++ ) {
 				if ( typeof parsedGroup[i] === 'string' ) {
-					if ( exclude.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+					if ( excludeGroups.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+						found = false;
+						break;
+					}
+					if ( excludeRegexes.find(
+						( regex ) => new RegExp( regex ).test( parsedGroup[i] ),
+					) ) {
 						found = false;
 						break;
 					}
 
-					if ( include.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+					if ( includeGroups.find( ( group ) => parsedGroup[i].startsWith( group ) ) ) {
+						found = true;
+					} else if ( includeRegexes.find(
+						( regex ) => new RegExp( regex ).test( parsedGroup[i] ),
+					) ) {
 						found = true;
 					}
 				}
@@ -56,8 +79,8 @@ class GroupRunner extends TestRunner {
 	runTests( tests, watcher, onStart, onResult, onFailure, options ) {
 		const groups = GroupRunner.getGroups( process.argv );
 
-		groups.include.forEach( ( group ) => {
-			if ( groups.exclude.includes( group ) ) {
+		groups.includeGroups.forEach( ( group ) => {
+			if ( groups.excludeGroups.includes( group ) ) {
 				return;
 			}
 
@@ -66,7 +89,8 @@ class GroupRunner extends TestRunner {
 		} );
 
 		return super.runTests(
-			groups.include.length > 0 || groups.exclude.length > 0
+			groups.includeGroups.length > 0 || groups.excludeGroups.length > 0
+			|| groups.includeRegexes.length > 0 || groups.excludeRegexes > 0
 				? tests.filter( ( test ) => GroupRunner.filterTest( groups, test ) )
 				: tests,
 			watcher,
